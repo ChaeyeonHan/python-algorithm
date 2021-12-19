@@ -11,7 +11,7 @@ for i in range(n-1):
 print(result)
 
 '''
-# 리스트 이용
+# 리스트 이용방법
 n = int(input())
 array = [0, 1]
 for i in range(2, n+1):
