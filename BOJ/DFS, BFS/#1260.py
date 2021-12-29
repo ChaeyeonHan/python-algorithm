@@ -7,7 +7,7 @@ def dfs(V):
 
 def bfs(V):
     queue = [V]  # 방문할 곳을 순서대로 큐에 넣는다
-    visited[V] = 0  # dfs를 완료해서 visited배열을 0으로 방문처리리
+    visited[V] = 0  # dfs를 완료해서 visited배열을 0으로 방문처리
     while queue:  # 큐 안에 데이터가 없을때까지
         V = queue.pop(0)
         print(V, end=' ')
