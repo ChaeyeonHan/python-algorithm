@@ -10,7 +10,7 @@ def bfs():
         x = queue.popleft()
         current = x[0]
         count = x[1]
-
+        # 방문 안한 곳에 대해서
         if visited[current] == False:
             visited[current] = True
             if current == K:
