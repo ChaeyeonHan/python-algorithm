@@ -1,3 +1,4 @@
+# << 파이썬 기초 >>
 #  람다표현식 예시
 def add(a,b) :
     return a+b
