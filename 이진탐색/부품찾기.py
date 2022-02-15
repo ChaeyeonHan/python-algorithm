@@ -1,66 +1,50 @@
-# 내가 푼거
-import sys
-
-N = int(sys.stdin.readline())
-N_list = list(map(int, sys.stdin.readline().split()))
-
-M = int(sys.stdin.readline())
-M_list = list(map(int, sys.stdin.readline().split()))
-
-for i in range(M):
-    if M_list[i] in N_list:
-        print("yes", end=' ')
-    else:
-        print("no", end=' ')
-
-
-# 1.이진탐색(반복문으로 구현)
+# 내 풀이
 n = int(input())
-array = list(map(int, input().split()))
-array.sort()
+stores = list(map(int, input().split()))
+stores.sort()  # 오름차순 정렬
 
 m = int(input())
-x = list(map(int, input().split()))
+nums = list(map(int, input().split()))
 
 def binary_search(array, target, start, end):
-    mid = (start+end)//2
-    while start <= end:
-        if array[mid] == target:
-            return mid
-        elif array[mid] > target:
-            end = mid - 1
-        else:
-            start = mid + 1
-    return None
-
-for i in x:
-    result = binary_search(array, i, 0, n-1)
-    if result != None:
-        print("yes", end=' ')
+    if start > end:
+        return None
+    mid = (start + end) // 2
+    if array[mid] == target:
+        return mid
+    elif array[mid] > target:
+        return binary_search(array, target, start, mid-1)
     else:
-        print("no", end=' ')
+        return binary_search(array, target, mid+1, end)
+
+answer=[]
+for i in nums:
+    result = binary_search(stores, i, 0, n-1)
+    if result != None:
+        answer.append('yes')
+    else:
+        answer.append('no')
+
+for i in range(len(answer)):  # 출력
+    print(answer[i], end=' ')
 
 
-# 2.계수 정렬
+# 정답(+계수정렬)
 n = int(input())
-array = [0]*1000001  # 모든 원소의 번호를 포함할 수 있는 리스트 생성
+stores = [0] * 1000001
 
-for i in input().split():  # 부품 번호를 입력받아서 저장하기
-    array[int(i)] = 1
-
+for i in input().split():
+    stores[int(i)] = 1
 m = int(input())
 x = list(map(int, input().split()))
 
 for i in x:
-    if array[i] != 1:  # 원소가 없는 경우
+    if stores[i] == 0:
         print('no', end=' ')
     else:
         print('yes', end=' ')
 
-
-# 3.집합 자료형 이용
-# set이용 => 특정한 데이터가 존재하는지 검사할때 유용하게 사용됨
-
+# 집합 자료형
 n = int(input())
 array = set(map(int, input().split()))
 

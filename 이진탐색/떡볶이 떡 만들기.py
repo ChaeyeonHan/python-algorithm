@@ -1,22 +1,24 @@
-#  파라매트릭 서치(parametric search) : 최적화문제를 결정 문제로 바꾸어 해결
-#  떡 높이를 이진탐색해서 구하기
-N, M = map(int, input().split())
-array = list(map(int, input().split()))
+# 정답
+# 높이가 1~10억까지의 정수 중 하나 -> 순차탐색X
+n, m = map(int, input().split())  # 떡의 갯수, 요청한 떡의 길이
+heights = list(map(int, input().split()))
 
 start = 0
-end = max(array)  # 최댓값으로 설정
+end = max(heights)
 
 result = 0
 while (start <= end):
-    mid = (start+end)//2
     total = 0
-    for i in array:
-        if i > mid:
-            total += i-mid
-    if total < M:
-        end = mid - 1
+
+    mid = (start+end) // 2
+    for x in heights:
+        if x > mid:
+            total += (x-mid)  # 손님이 가져가는 떡의 양 total 구하기
+
+    if total < m:  # 떡의 양이 부족한 경우 -> 자르는 높이를 줄여야한다
+        end = mid-1
     else:
-        result = mid  # 최대한 덜 잘랐을 때 구하기.
-        start = mid + 1
+        result = mid  # 최대한 덜 잘랐을때를 구해야하므로 일단 저장해두기
+        start = mid+1
 
 print(result)
