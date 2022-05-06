@@ -1,8 +1,9 @@
-n = int(input())
+import sys
+n = int(sys.stdin.readline().rstrip())
 
 stack=[]
 for i in range(n):
-    command = input().split()  # 명령 입력받기
+    command = sys.stdin.readline().split()  # 명령 입력받기
     if command[0] == 'push':
         stack.append(command[1])
     elif command[0] == 'top':
