@@ -38,17 +38,16 @@ for _ in range(T):
 T = int(input())
 for _ in range(T):
     PS = list(input())
-    sum = 0
+    cnt = 0
     for i in PS:
         if i == '(':
-            sum += 1
+            cnt += 1
         elif i == ')':
-            sum -= 1
-
-        if sum < 0:  # 괄호 갯수가 맞지 않는 경우를 걸러주기 위한 if문
+            cnt -= 1
+        if cnt < 0:  # ')' 없이 '('가 온 경우
             print('NO')
             break
-    if sum == 0:
+    if cnt == 0:
         print('YES')
-    else:  # 괄호의 갯수는 맞지만 짝이 맞지 않는 경우
+    elif cnt > 0:
         print('NO')
