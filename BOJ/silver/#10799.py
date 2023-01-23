@@ -17,8 +17,8 @@ for i in range(len(str)):
     else:  # )
         if str[i-1] == '(':  # 레이저
             stack.pop()
-            result += len(stack)
+            result += len(stack)  # 레이저를 만날 경우, stack에 쌓인 '('의 수만큼 쇠막대기가 절단된다
         else:  # 쇠막대기
             stack.pop()
-            result += 1
+            result += 1  # 쇠막대기의 끝지점을 의미하며, 1개만 절단된다
 print(result)

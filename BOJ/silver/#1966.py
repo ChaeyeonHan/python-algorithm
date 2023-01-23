@@ -17,8 +17,8 @@ from collections import deque
 T = int(input())
 
 for _ in range(T):
-    N, target = map(int, sys.stdin.readline().split())
-    priority = deque(list(map(int, sys.stdin.readline().split())))  # 중요도 입력받기
+    N, target = map(int, sys.stdin.readline().rstrip().split())
+    priority = deque(list(map(int, sys.stdin.readline().rstrip().split())))  # 중요도 입력받기
     idx = deque(range(0, N))
     cnt = 0  # 몇번째 인쇄인지
 
@@ -33,5 +33,31 @@ for _ in range(T):
             priority.rotate(-1)
             idx.rotate(-1)
 
+# 다른 풀이
+# deque을 이중배열로 구성해서 0번째 인덱스에 중요도, 1번째 인덱스에 현재 큐에서의 문서 위치를 저장
+
+import sys
+from collections import deque
+
+T = int(sys.stdin.readline())
+while T:
+    order = []  # 인쇄 순서 저장
+    N, M = map(int, sys.stdin.readline().split())
+
+    deq = deque(list(map(int, sys.stdin.readline().split())))  # 중요도 입력받기
+    for i in range(len(deq)):
+        deq[i] = [deq[i], i]  # 현재 문서의 위치도 함께 저장
+    # print(deq)  # deque([[1, 0], [2, 1], [3, 2], [4, 3]])
+    while len(deq):  # 문서가 다 인쇄될때까지
+        if max(deq)[0] > deq[0][0]:
+            deq.append(deq.popleft())
+        else:
+            order.append(deq.popleft())
+
+    for i in range(N):
+        if order[i][1] == M:
+            print(i+1)
+            break
+    T = T-1
 
 

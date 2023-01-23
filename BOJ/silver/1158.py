@@ -22,6 +22,7 @@ for i in range(N):
     result.append(str(circle.pop(num)))
 
 # print("<", ", ".join(result), ">", sep="")  # sep을 추가해서 <, >, 숫자들 사이에 공백이 없도록
+# print("<%s>"%", ".join(map(str, result)))
 print("<" + ", ".join(result) + ">")
 
 # 풀이2
