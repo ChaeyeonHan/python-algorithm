@@ -12,9 +12,27 @@ for i in range(N):
         for k in range(j+1, N):
             if(d[i]+d[j]+d[k] > M):
                 continue # 해당되는 경우 X. 계속 진행
-            else :
+            else:
                 sum = d[i]+d[k]+d[j]
                 if(max <= sum):
                     max = sum
 
 print(max)
+
+# 정렬해서
+import sys
+input = sys.stdin.readline
+
+N, M = map(int, input().split())
+nums = list(map(int, input().split()))
+max_n = 0
+
+nums.sort()
+for i in range(N-1, 1, -1):
+    for j in range(i-1, 0, -1):
+        for k in range(j-1, -1, -1):
+            # print(i, j, k)
+            sum = nums[i] + nums[j] + nums[k]
+            if sum <= M and max_n < sum:
+                max_n = sum  # sum값 갱신
+print(max_n)
