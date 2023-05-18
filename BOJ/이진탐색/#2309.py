@@ -22,3 +22,18 @@ for i in range(0, len(heights)-1):
 heights.sort()
 for i in heights:
     print(i)
+
+# combinations 이용
+import sys
+input = sys.stdin.readline
+from itertools import combinations
+
+heights = [int(input()) for _ in range(9)]
+
+seven = list(combinations(heights, 7))
+
+for i in seven:
+    if sum(i) == 100:
+        for j in sorted(i):
+            print(j)
+        break
